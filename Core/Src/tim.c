@@ -98,120 +98,20 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   
-  static uint8_t led_blink=0xFF, key=0xFF;
-//  static uint16_t count, led_pin, led_blink_count, key_count=0x0000;
-  static uint8_t send_count=0;
-  uint32_t *led_flag, *key_flag;
-  static GPIO_TypeDef *led_gpio;
-  LED_HandleTypeDef *timled;
+  static uint8_t tim11_count=0;
   
   if(htim->Instance == TIM11)
   {
+    bxf_user_int_flag.flag2 = 1;
     
-    key_flag = (uint32_t *)(&bxf_user_key_flag);
-    led_flag = (uint32_t *)(&bxf_user_led_flag);
-  
-//    if(*key_flag != 0x00U)
-//    {
-//      switch(*key_flag)
-//      {
-//        case 0x01U:
-//          if(HAL_GPIO_ReadPin(USER_KEY_GPIO_Port, USER_KEY_Pin) == GPIO_PIN_RESET)
-//            key = 0x00;
-//          else
-//          {  
-//            *key_flag &= (0xFFFFFFFE);
-//            key = 0xFF;
-//            key_count = 0x0000;
-//            BXF_UsrLog("User Key up!");
-//          }
-//          break;
-//        
-//        default :
-//          break;
-//      }
-//    }
-//    
-//    if(key == 0x00)
-//    {
-//      if(key_count > 100)
-//      {
-//        if((key_count-100) == 5)
-//        {
-//          BXF_UsrLog("User Key down!");
-//          key_count = 101;
-//        }
-//        else
-//          key_count++;
-//      }
-//      else
-//        key_count++;
-//    }
-      
-    
-//    if(*led_flag != 0x00U)
-//    {
-//      switch(*led_flag)
-//      {
-//        case 0x01U:
-//          led_gpio = USER_LED_GPIO_Port;
-//          led_pin = USER_LED_Pin;
-//          *led_flag &= 0xFFFFFFFE;
-//          timled = bled[0];
-//          break;
-//          
-//        default :
-//          break;
-//      }
-//      
-//      switch(timled->LED_STATE)
-//      {
-//        case USER_LED_OFF:
-//          led_blink = 0xFF;
-//          HAL_GPIO_WritePin(led_gpio, led_pin, GPIO_PIN_SET);
-//          break;
-//        
-//        case USER_LED_ON:
-//          led_blink = 0xFF;
-//          HAL_GPIO_WritePin(led_gpio, led_pin, GPIO_PIN_RESET);
-//          break;
-//       
-//        default:
-//          if((timled->LED_STATE > USER_LED_ON) && (timled->LED_STATE < (USER_LED_BLINK_100ms+1)))
-//          {
-//            led_blink = 0x00;
-//            led_blink_count = timled->LED_BLINK_TIME;
-//          }
-//          break;
-//      }
-//    }
-//    
-//    if(led_blink == 0x00)
-//    {
-//      if(count > led_blink_count)
-//      {
-//        count = 0;
-//        HAL_GPIO_TogglePin(led_gpio, led_pin);
-////        printf("led\r\n");
-//      }
-//      else
-//      {
-//        count++;
-//      }
-//    }
-    
-    if(bxf_user_led_flag.flag31 == 0)
+    if(tim11_count > 10)
     {
-      if(send_count > 100)
-      {
-        
-        send_count = 0;
-        bxf_user_led_flag.flag31 = 1;
-      }
-      else
-      {
-        send_count++;
-      }
+      tim11_count = 0;
+      bxf_user_int_flag.flag3 = 1;
+    }
+    else
+    {
+      tim11_count++;
     }
   }
 }

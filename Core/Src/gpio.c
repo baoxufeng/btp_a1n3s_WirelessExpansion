@@ -85,7 +85,7 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Pin = USER_KEY_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
-//  HAL_GPIO_Init(USER_KEY_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(USER_KEY_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pin : PtPin */
   GPIO_InitStruct.Pin = USER_LED_Pin;
@@ -111,16 +111,17 @@ void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
   switch(GPIO_Pin)
   {
     case USER_KEY_Pin:
-      bxf_user_led_flag.flag5 = 1;
       if(HAL_GPIO_ReadPin(USER_KEY_GPIO_Port, USER_KEY_Pin) == GPIO_PIN_RESET)
       {
-        bxf_user_key_flag.flag0 = 1;
-        BXF_UsrLog("User Key down!");
+        bxf_user_int_flag.flag0 = 1;
       }
       break;
     
     case nRF_INT_Pin:
-      bxf_user_led_flag.flag6 = 1;
+      if(HAL_GPIO_ReadPin(nRF_INT_GPIO_Port, nRF_INT_Pin) == GPIO_PIN_RESET)
+      {
+        bxf_user_int_flag.flag1 = 1;
+      }
       break;
       
     default :

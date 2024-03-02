@@ -101,7 +101,7 @@ int main(void)
 //  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 	BXF_FWLog(__CHIP__, __VS__);
-//  MX_USB_HOST_Init();
+  MX_USB_HOST_Init();
   BXF_USR_SYSInit();
   
   BXF_UsrLog("System initialization is complete !");
@@ -112,66 +112,68 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+    BXF_USR_KEY_Proess();
+    BXF_USR_TIM11_Proess();
     /* USER CODE END WHILE */
-//    MX_USB_HOST_Process();
+    MX_USB_HOST_Process();
     
-    if(bxf_user_led_flag.flag6 == 1)
-    {
-      bxf_user_led_flag.flag6 = 0;
-      BXF_UsrLog("nRF_INT_Pin");
-      state = BXF_NRF_ReadData(nRF24L01P_R_reg(NRF_REG_STATUS));
-      BXF_NRF_WriteData(nRF24L01P_W_reg(NRF_REG_STATUS), state);
+//    if(bxf_user_led_flag.flag6 == 1)
+//    {
+//      bxf_user_led_flag.flag6 = 0;
+//      BXF_UsrLog("nRF_INT_Pin");
+//      state = BXF_NRF_ReadData(nRF24L01P_R_reg(NRF_REG_STATUS));
+//      BXF_NRF_WriteData(nRF24L01P_W_reg(NRF_REG_STATUS), state);
 
-      if(state&BXF_NRF_MAX_RT)
-      {
-        BXF_UsrLog("BXF_NRF_MAX_RT");
-        bxf_user_led_flag.flag2 = 1;
-        BXF_NRF_WriteData(NRF_CMD_FLUSH_TX, 0xFF);
-        
-      }
-      else if(state&BXF_NRF_TX_DS)
-      {
-        BXF_UsrLog("BXF_NRF_TX_DS");
-        bxf_user_led_flag.flag3 = 1;
-      }
-      else if(state&BXF_NRF_RX_DS)
-      {
-        BXF_UsrLog("BXF_NRF_RX_DS");
-        if(bxf_user_led_flag.flag4 == 0)
-        {
-          bxf_user_led_flag.flag4 = 1;
-          BXF_NRF_ReadBuff(NRF_CMD_R_RX_PAYLOAD, nrf_rx_buff, nrf_rx_buff_width);
-          BXF_NRF_WriteData(NRF_CMD_FLUSH_RX, 0xFF);
-          
-          for(i=0;i<nrf_rx_buff_width;i++)
-          {
-            printf("RX_buff[%d] = %#2x\r\n", i, nrf_rx_buff[i]);
-          }
-          bxf_user_led_flag.flag4 = 0;
-        }
-      }
-    }
-    
-    if((bxf_user_led_flag.flag31 == 1) && (bxf_user_led_flag.flag3 == 1))
-    {
-      bxf_user_led_flag.flag31 = 0;
-      BXF_UsrLog("send data!");
-      if(BXF_NRF_TxDate(tx_data_tim) == BXF_NRF_OK)
-      {
-        BXF_UsrLog("ok");
-        BXF_UsrLog("%#2x", tx_data_tim[1]);
-      }
-      else
-      {
-        BXF_ErrLog("fail");
-      }
-      
-      for(i=1;i<32;i++)
-      {
-        tx_data_tim[i]++;
-      }
-      
-    }
+//      if(state&BXF_NRF_MAX_RT)
+//      {
+//        BXF_UsrLog("BXF_NRF_MAX_RT");
+//        bxf_user_led_flag.flag2 = 1;
+//        BXF_NRF_WriteData(NRF_CMD_FLUSH_TX, 0xFF);
+//        
+//      }
+//      else if(state&BXF_NRF_TX_DS)
+//      {
+//        BXF_UsrLog("BXF_NRF_TX_DS");
+//        bxf_user_led_flag.flag3 = 1;
+//      }
+//      else if(state&BXF_NRF_RX_DS)
+//      {
+//        BXF_UsrLog("BXF_NRF_RX_DS");
+//        if(bxf_user_led_flag.flag4 == 0)
+//        {
+//          bxf_user_led_flag.flag4 = 1;
+//          BXF_NRF_ReadBuff(NRF_CMD_R_RX_PAYLOAD, nrf_rx_buff, nrf_rx_buff_width);
+//          BXF_NRF_WriteData(NRF_CMD_FLUSH_RX, 0xFF);
+//          
+//          for(i=0;i<nrf_rx_buff_width;i++)
+//          {
+//            printf("RX_buff[%d] = %#2x\r\n", i, nrf_rx_buff[i]);
+//          }
+//          bxf_user_led_flag.flag4 = 0;
+//        }
+//      }
+//    }
+//    
+//    if((bxf_user_led_flag.flag31 == 1) && (bxf_user_led_flag.flag3 == 1))
+//    {
+//      bxf_user_led_flag.flag31 = 0;
+//      BXF_UsrLog("send data!");
+//      if(BXF_NRF_TxDate(tx_data_tim) == BXF_NRF_OK)
+//      {
+//        BXF_UsrLog("ok");
+//        BXF_UsrLog("%#2x", tx_data_tim[1]);
+//      }
+//      else
+//      {
+//        BXF_ErrLog("fail");
+//      }
+//      
+//      for(i=1;i<32;i++)
+//      {
+//        tx_data_tim[i]++;
+//      }
+//      
+//    }
 
     /* USER CODE BEGIN 3 */
   }

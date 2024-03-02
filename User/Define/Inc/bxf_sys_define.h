@@ -43,8 +43,12 @@ typedef struct
   uint32_t flag31:1;
 } BXF_USR_Flag32BitTypeDef;
   
+#define bxf_key_delay 5 //500ms
+
 extern BXF_USR_Flag32BitTypeDef bxf_user_led_flag;
 extern BXF_USR_Flag32BitTypeDef bxf_user_key_flag;
+extern BXF_USR_Flag32BitTypeDef bxf_user_int_flag;
+extern BXF_USR_Flag32BitTypeDef bxf_user_nrf_flag;
 
 void BXF_USR_DefineInit(void);
 

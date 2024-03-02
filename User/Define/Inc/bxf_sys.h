@@ -7,7 +7,7 @@ extern "C" {
 
 #include "main.h"
 
-#define BXF_DEFINE_PROJECT "nRF24L01P_RX"
+#define BXF_DEFINE_PROJECT "nRF24L01P_TX"
 
 #define  BXF_FWLog(__AA__,__BB__)   do { \
                             printf("Chip : %s\r\n",__AA__); \
@@ -69,6 +69,8 @@ extern LED_HandleTypeDef bled0;
 HAL_StatusTypeDef BXF_USR_LEDCtrl(LED_HandleTypeDef *bled, BXF_LED_StateTypeDef BXF_LED_State, BXF_LED_CommandPriorityTypeDef  BXF_LED_CommandPriority);
 void BXF_USR_LEDInit(void);
 void BXF_USR_SYSInit(void);
+void BXF_USR_KEY_Proess(void);
+void BXF_USR_TIM11_Proess(void);
 
 
 #ifdef __cplusplus
