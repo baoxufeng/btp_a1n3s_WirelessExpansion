@@ -152,66 +152,18 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>101</LineNumber>
+          <LineNumber>71</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134221096</Address>
+          <Address>134253132</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\User\Define\Src\bxf_sys.c</Filename>
+          <Filename>../USB_HOST/App/usb_host.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\F411_btp_a1n3s\../User/Define/Src/bxf_sys.c\101</Expression>
-        </Bp>
-        <Bp>
-          <Number>1</Number>
-          <Type>0</Type>
-          <LineNumber>237</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134222194</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\User\Define\Src\bxf_sys.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\F411_btp_a1n3s\../User/Define/Src/bxf_sys.c\237</Expression>
-        </Bp>
-        <Bp>
-          <Number>2</Number>
-          <Type>0</Type>
-          <LineNumber>114</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134219844</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\User\nRF24L01P\Src\nrf24l01p.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\F411_btp_a1n3s\../User/nRF24L01P/Src/nrf24l01p.c\114</Expression>
-        </Bp>
-        <Bp>
-          <Number>3</Number>
-          <Type>0</Type>
-          <LineNumber>88</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>134220926</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\User\Define\Src\bxf_sys.c</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression>\\F411_btp_a1n3s\../User/Define/Src/bxf_sys.c\88</Expression>
+          <Expression>\\F411_btp_a1n3s\../USB_HOST/App/usb_host.c\71</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -239,6 +191,16 @@
           <count>4</count>
           <WinNumber>1</WinNumber>
           <ItemText>bxf_user_nrf_flag</ItemText>
+        </Ww>
+        <Ww>
+          <count>5</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>bxf_btp_a1n3s_info</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>user_btp_a1n3s_info</ItemText>
         </Ww>
       </WatchWindow1>
       <MemoryWindow1>

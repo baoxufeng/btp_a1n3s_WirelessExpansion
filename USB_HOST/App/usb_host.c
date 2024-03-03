@@ -70,12 +70,7 @@ void USBH_VS_EventCallback(USBH_HandleTypeDef *phost)
       data1 = (uint8_t *)user_btp_a1n3s_info;
       data2 = (uint8_t *)&bxf_btp_a1n3s_info;
       
-      i = 12;
-      while(i)
-      {
-        i--;
-        *(data2+i) = *(data1+i);
-      }
+      BXF_USR_MEMCopy(data1, data2, 12);
       
       
       #if 0

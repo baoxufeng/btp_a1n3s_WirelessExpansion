@@ -104,15 +104,15 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   {
     bxf_user_int_flag.flag2 = 1;
     
-    if(tim11_50mscount > 5)
-    {
-      tim11_50mscount = 0;
+//    if(tim11_50mscount > 5)
+//    {
+//      tim11_50mscount = 0;
       bxf_user_int_flag.flag4 = 1;
-    }
-    else
-    {
-      tim11_50mscount++;
-    }
+//    }
+//    else
+//    {
+//      tim11_50mscount++;
+//    }
     
     if(tim11_100mscount > 10)
     {

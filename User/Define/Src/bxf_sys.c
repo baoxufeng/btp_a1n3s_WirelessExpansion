@@ -85,25 +85,25 @@ void BXF_USR_NRF_INT_Proess(void)
   if(bxf_user_int_flag.flag1 == 1)
   {
     
-    BXF_UsrLog("nRF_INT_Pin");
+//    BXF_UsrLog("nRF_INT_Pin");
     state= BXF_NRF_ReadData(nRF24L01P_R_reg(NRF_REG_STATUS));
     BXF_NRF_WriteData(nRF24L01P_W_reg(NRF_REG_STATUS), state);
 
     if(state&BXF_NRF_MAX_RT)
     {
-      BXF_UsrLog("BXF_NRF_MAX_RT");
+//      BXF_UsrLog("BXF_NRF_MAX_RT");
       bxf_user_nrf_flag.flag0 = 1;
       BXF_NRF_WriteData(NRF_CMD_FLUSH_TX, 0xFF);
       
     }
     else if(state&BXF_NRF_TX_DS)
     {
-      BXF_UsrLog("BXF_NRF_TX_DS");
+//      BXF_UsrLog("BXF_NRF_TX_DS");
       bxf_user_nrf_flag.flag1 = 1;
     }
     else if(state&BXF_NRF_RX_DS)
     {
-      BXF_UsrLog("BXF_NRF_RX_DS");
+//      BXF_UsrLog("BXF_NRF_RX_DS");
       if(bxf_user_nrf_flag.flag2 == 0)
       {
         bxf_user_nrf_flag.flag2= 1;
@@ -112,7 +112,7 @@ void BXF_USR_NRF_INT_Proess(void)
         
         for(i=0;i<nrf_rx_buff_width;i++)
         {
-          printf("RX_buff[%d] = %#2x\r\n", i, nrf_rx_buff[i]);
+//          printf("RX_buff[%d] = %#2x\r\n", i, nrf_rx_buff[i]);
         }
         bxf_user_nrf_flag.flag2 = 0;
       }
@@ -134,6 +134,8 @@ void BXF_USR_KEY_Proess(void)
 
 void BXF_USR_TIM11_Proess(void)
 {
+  uint8_t i;
+  
   static uint8_t key_1s=200,led_blink=0xFF;
   static uint16_t led_pin,led_blink_count,count;
   uint32_t *led_flag;
@@ -235,6 +237,16 @@ void BXF_USR_TIM11_Proess(void)
   {
     if(bxf_user_nrf_flag.flag3 == 1)
       BXF_NRF_TxDate((uint8_t *)(&bxf_btp_a1n3s_info), 12);
+    
+    
+    i=12;
+    while(i)
+    {
+      i--;
+      printf("%#2x", *((uint8_t *)(&bxf_btp_a1n3s_info)+i));
+    }
+    printf("\r\n");
+    
     bxf_user_int_flag.flag4 = 0;
   }
   
