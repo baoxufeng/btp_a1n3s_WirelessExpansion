@@ -6,6 +6,7 @@ extern "C" {
 #endif
 
 #include "main.h"
+#include "usbh_vendor_specific_btp_a1n3s.h"
 
 typedef struct
 {
@@ -45,12 +46,17 @@ typedef struct
   
 #define bxf_key_delay 5 //500ms
 
+extern VS_BTP_A1N3S_Info_TypeDef bxf_btp_a1n3s_info;
+
 extern BXF_USR_Flag32BitTypeDef bxf_user_led_flag;
 extern BXF_USR_Flag32BitTypeDef bxf_user_key_flag;
 extern BXF_USR_Flag32BitTypeDef bxf_user_int_flag;
 extern BXF_USR_Flag32BitTypeDef bxf_user_nrf_flag;
 
+
 void BXF_USR_DefineInit(void);
+void BXF_USR_MEMCopy(uint8_t *pdata1, uint8_t *pdata2, uint16_t Size);
+void BXF_USR_MEMFill(uint8_t *pdata1, uint8_t data, uint16_t Size);
 
 #ifdef __cplusplus
 }

@@ -44,4 +44,6 @@ f411_btp_a1n3s/usbh_core.o: \
   ..\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ioreq.h \
   ..\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_pipes.h \
   ..\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ctlreq.h \
-  ..\User\Define\Inc\bxf_sys.h
+  ..\User\Define\Inc\bxf_sys.h ..\User\Define\Inc\bxf_sys_define.h \
+  ..\User\Vendor_Specific\Inc\usbh_vendor_specific_btp_a1n3s.h \
+  ..\User\Vendor_Specific\Inc\usbh_vendor_specific.h

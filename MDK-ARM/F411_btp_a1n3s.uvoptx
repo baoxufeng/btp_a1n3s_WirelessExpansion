@@ -152,9 +152,9 @@
         <Bp>
           <Number>0</Number>
           <Type>0</Type>
-          <LineNumber>182</LineNumber>
+          <LineNumber>101</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134221420</Address>
+          <Address>134221096</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -163,14 +163,14 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\User\Define\Src\bxf_sys.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\F411_btp_a1n3s\../User/Define/Src/bxf_sys.c\182</Expression>
+          <Expression>\\F411_btp_a1n3s\../User/Define/Src/bxf_sys.c\101</Expression>
         </Bp>
         <Bp>
           <Number>1</Number>
           <Type>0</Type>
-          <LineNumber>181</LineNumber>
+          <LineNumber>237</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134221370</Address>
+          <Address>134222194</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -179,30 +179,30 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\User\Define\Src\bxf_sys.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\F411_btp_a1n3s\../User/Define/Src/bxf_sys.c\181</Expression>
+          <Expression>\\F411_btp_a1n3s\../User/Define/Src/bxf_sys.c\237</Expression>
         </Bp>
         <Bp>
           <Number>2</Number>
           <Type>0</Type>
-          <LineNumber>180</LineNumber>
+          <LineNumber>114</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134221358</Address>
+          <Address>134219844</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>1</BreakIfRCount>
-          <Filename>..\User\Define\Src\bxf_sys.c</Filename>
+          <Filename>..\User\nRF24L01P\Src\nrf24l01p.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\F411_btp_a1n3s\../User/Define/Src/bxf_sys.c\180</Expression>
+          <Expression>\\F411_btp_a1n3s\../User/nRF24L01P/Src/nrf24l01p.c\114</Expression>
         </Bp>
         <Bp>
           <Number>3</Number>
           <Type>0</Type>
-          <LineNumber>119</LineNumber>
+          <LineNumber>88</LineNumber>
           <EnabledFlag>1</EnabledFlag>
-          <Address>134220948</Address>
+          <Address>134220926</Address>
           <ByteObject>0</ByteObject>
           <HtxType>0</HtxType>
           <ManyObjects>0</ManyObjects>
@@ -211,7 +211,7 @@
           <BreakIfRCount>1</BreakIfRCount>
           <Filename>..\User\Define\Src\bxf_sys.c</Filename>
           <ExecCommand></ExecCommand>
-          <Expression>\\F411_btp_a1n3s\../User/Define/Src/bxf_sys.c\119</Expression>
+          <Expression>\\F411_btp_a1n3s\../User/Define/Src/bxf_sys.c\88</Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
@@ -220,12 +220,32 @@
           <WinNumber>1</WinNumber>
           <ItemText>led_flag</ItemText>
         </Ww>
+        <Ww>
+          <count>1</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>inin_data</ItemText>
+        </Ww>
+        <Ww>
+          <count>2</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>nrf_tx_data</ItemText>
+        </Ww>
+        <Ww>
+          <count>3</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>pData</ItemText>
+        </Ww>
+        <Ww>
+          <count>4</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>bxf_user_nrf_flag</ItemText>
+        </Ww>
       </WatchWindow1>
       <MemoryWindow1>
         <Mm>
           <WinNumber>1</WinNumber>
           <SubType>2</SubType>
-          <ItemText>0x20000848</ItemText>
+          <ItemText>0x20000EF7 </ItemText>
           <AccSizeX>0</AccSizeX>
         </Mm>
       </MemoryWindow1>

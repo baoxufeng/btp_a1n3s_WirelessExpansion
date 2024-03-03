@@ -73,7 +73,7 @@ void Error_Handler(void);
 
 /* USER CODE BEGIN Private defines */
 #define __CHIP__ "STM32F411CCU6"
-#define __VS__ "0.1"
+#define __VS__ "1.0"
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

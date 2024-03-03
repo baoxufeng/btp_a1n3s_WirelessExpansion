@@ -35,4 +35,14 @@ f411_btp_a1n3s/bxf_sys_define.o: ..\User\Define\Src\bxf_sys_define.c \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_uart.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_hal_hcd.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
+  ..\User\Vendor_Specific\Inc\usbh_vendor_specific_btp_a1n3s.h \
+  ..\User\Vendor_Specific\Inc\usbh_vendor_specific.h \
+  ..\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_core.h \
+  ..\USB_HOST\Target\usbh_conf.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  ..\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_def.h \
+  ..\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ioreq.h \
+  ..\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_pipes.h \
+  ..\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ctlreq.h

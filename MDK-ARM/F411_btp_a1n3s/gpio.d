@@ -36,4 +36,14 @@ f411_btp_a1n3s/gpio.o: ..\Core\Src\gpio.c ..\Core\Inc\gpio.h \
   ..\Drivers\STM32F4xx_HAL_Driver\Inc\stm32f4xx_ll_usb.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   ..\User\Define\Inc\bxf_sys.h ..\User\Define\Inc\bxf_sys_define.h \
+  ..\User\Vendor_Specific\Inc\usbh_vendor_specific_btp_a1n3s.h \
+  ..\User\Vendor_Specific\Inc\usbh_vendor_specific.h \
+  ..\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_core.h \
+  ..\USB_HOST\Target\usbh_conf.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  ..\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_def.h \
+  ..\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ioreq.h \
+  ..\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_pipes.h \
+  ..\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ctlreq.h \
   ..\User\nRF24L01P\Inc\nrf24l01p.h ..\Core\Inc\spi.h

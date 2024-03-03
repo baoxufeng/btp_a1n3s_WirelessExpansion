@@ -98,20 +98,30 @@ void HAL_TIM_Base_MspDeInit(TIM_HandleTypeDef* tim_baseHandle)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   
-  static uint8_t tim11_count=0;
+  static uint8_t tim11_100mscount=0, tim11_50mscount=0;
   
   if(htim->Instance == TIM11)
   {
     bxf_user_int_flag.flag2 = 1;
     
-    if(tim11_count > 10)
+    if(tim11_50mscount > 5)
     {
-      tim11_count = 0;
+      tim11_50mscount = 0;
+      bxf_user_int_flag.flag4 = 1;
+    }
+    else
+    {
+      tim11_50mscount++;
+    }
+    
+    if(tim11_100mscount > 10)
+    {
+      tim11_100mscount = 0;
       bxf_user_int_flag.flag3 = 1;
     }
     else
     {
-      tim11_count++;
+      tim11_100mscount++;
     }
   }
 }

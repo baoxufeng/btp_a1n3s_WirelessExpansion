@@ -71,6 +71,7 @@ void BXF_USR_LEDInit(void);
 void BXF_USR_SYSInit(void);
 void BXF_USR_KEY_Proess(void);
 void BXF_USR_TIM11_Proess(void);
+void BXF_USR_NRF_INT_Proess(void);
 
 
 #ifdef __cplusplus

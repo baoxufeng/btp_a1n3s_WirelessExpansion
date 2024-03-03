@@ -21,7 +21,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "usbh_core.h"
 #include "bxf_sys.h"
-
+#include "bxf_sys_define.h"
 /** @addtogroup USBH_LIB
   * @{
   */
@@ -716,6 +716,7 @@ USBH_StatusTypeDef  USBH_Process(USBH_HandleTypeDef *phost)
           {
             phost->gState = HOST_CLASS_REQUEST;
             USBH_UsrLog("%s class started.", phost->pActiveClass->Name);
+            bxf_user_nrf_flag.flag3 = 1;
             if(BXF_USR_LEDCtrl(&bled0, USER_LED_OFF, Priority_1) != HAL_OK) USBH_ErrLog("led error !");
             
             
@@ -806,6 +807,7 @@ USBH_StatusTypeDef  USBH_Process(USBH_HandleTypeDef *phost)
       }
       USBH_UsrLog("USB Device disconnected");
       if(BXF_USR_LEDCtrl(&bled0, USER_LED_BLINK_1s, Priority_1) != HAL_OK) USBH_ErrLog("led error !");
+      bxf_user_nrf_flag.flag3 = 0;
       if (phost->device.is_ReEnumerated == 1U)
       {
         phost->device.is_ReEnumerated = 0U;

@@ -97,17 +97,23 @@ void BXF_NRF_TxMode(void)
   
 }
 
-BXF_NRF_StatusTypeDef BXF_NRF_TxDate(uint8_t *pData)
+BXF_NRF_StatusTypeDef BXF_NRF_TxDate(uint8_t *pData, uint8_t Size)
 {
   uint8_t state;
+  uint8_t nrf_tx_data[32];
   
-  while(bxf_user_led_flag.flag3 == 0);
+  while(bxf_user_nrf_flag.flag1 == 0);
+  
+  nrf_tx_data[0] = Size;
+  
+  
+  BXF_USR_MEMCopy(pData, &(nrf_tx_data[1]), Size);
 //  while((bxf_user_led_flag.flag3 == 0) ||  (bxf_user_led_flag.flag2 == 1));
   
   nRF24L01P_CE(0);
-  BXF_NRF_WriteBuff(NRF_CMD_W_TX_PAYLOAD, pData, nrf_rx_buff_width);
+  BXF_NRF_WriteBuff(NRF_CMD_W_TX_PAYLOAD, nrf_tx_data, 32);
 //  HAL_Delay(1);
-  bxf_user_led_flag.flag3 = 0;
+  bxf_user_nrf_flag.flag1 = 0;
   nRF24L01P_CE(1);
   
   return (BXF_NRF_OK);
@@ -171,18 +177,15 @@ BXF_NRF_StatusTypeDef NRF24L01P_Check(void)
 
 void BXF_NRF_nRF24L01P_Init(void)
 {
-  uint8_t i, state;
+  uint8_t i, state, inin_data[31];
   
   HAL_Delay(150);
   
   nRF24L01P_CS(1);
   
-  i = nrf_rx_buff_width;
-  while(i)
-  {
-    i--;
-    nrf_rx_buff[i] = 0;
-  }
+  BXF_USR_MEMFill(inin_data, 0xAA, 31);
+  
+  BXF_USR_MEMFill(nrf_rx_buff, 0x00, nrf_rx_buff_width);
   
   while(NRF24L01P_Check() == BXF_NRF_ERROR)
   {
@@ -197,6 +200,8 @@ void BXF_NRF_nRF24L01P_Init(void)
   
   #ifdef nRF24L01P_TX
     BXF_NRF_TxMode();
+    
+    BXF_NRF_TxDate(inin_data, 31);
   #endif
   
   #ifdef nRF24L01P_RX

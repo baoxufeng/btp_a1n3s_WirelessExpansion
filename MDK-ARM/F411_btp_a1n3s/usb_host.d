@@ -49,4 +49,5 @@ f411_btp_a1n3s/usb_host.o: ..\USB_HOST\App\usb_host.c \
   ..\Middlewares\ST\STM32_USB_Host_Library\Class\HID\Inc\usbh_hid_keybd.h \
   ..\User\Vendor_Specific\Inc\usbh_vendor_specific.h \
   ..\User\Vendor_Specific\Inc\usbh_vendor_specific_btp_a1n3s.h \
-  ..\User\Vendor_Specific\Inc\bxf_usb_define.h
+  ..\User\Vendor_Specific\Inc\bxf_usb_define.h \
+  ..\User\Define\Inc\bxf_sys_define.h

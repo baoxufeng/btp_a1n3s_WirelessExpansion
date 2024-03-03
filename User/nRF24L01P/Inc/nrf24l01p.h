@@ -89,7 +89,7 @@ uint8_t BXF_NRF_ReadData(uint8_t BXF_nRF24L01P_REG);
 void BXF_NRF_ReadBuff(uint8_t BXF_nRF24L01P_REG, uint8_t *REGDataBuff, uint8_t Size);
 
 void BXF_NRF_TxMode(void);
-BXF_NRF_StatusTypeDef BXF_NRF_TxDate(uint8_t *pData);
+BXF_NRF_StatusTypeDef BXF_NRF_TxDate(uint8_t *pData, uint8_t Size);
 void BXF_NRF_RxMode(void);
 BXF_NRF_StatusTypeDef BXF_NRF_RxDate(uint8_t *pData);
 

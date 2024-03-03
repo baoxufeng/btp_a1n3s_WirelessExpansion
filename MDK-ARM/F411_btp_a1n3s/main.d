@@ -37,4 +37,15 @@ f411_btp_a1n3s/main.o: ..\Core\Src\main.c ..\Core\Inc\main.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h ..\Core\Inc\spi.h \
   ..\Core\Inc\tim.h ..\Core\Inc\usart.h ..\USB_HOST\App\usb_host.h \
   ..\Core\Inc\gpio.h ..\User\Define\Inc\bxf_sys.h \
-  ..\User\Define\Inc\bxf_sys_define.h ..\User\nRF24L01P\Inc\nrf24l01p.h
+  ..\User\Define\Inc\bxf_sys_define.h \
+  ..\User\Vendor_Specific\Inc\usbh_vendor_specific_btp_a1n3s.h \
+  ..\User\Vendor_Specific\Inc\usbh_vendor_specific.h \
+  ..\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_core.h \
+  ..\USB_HOST\Target\usbh_conf.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
+  ..\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_def.h \
+  ..\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ioreq.h \
+  ..\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_pipes.h \
+  ..\Middlewares\ST\STM32_USB_Host_Library\Core\Inc\usbh_ctlreq.h \
+  ..\User\nRF24L01P\Inc\nrf24l01p.h

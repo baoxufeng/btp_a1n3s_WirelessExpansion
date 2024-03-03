@@ -79,6 +79,49 @@ void BXF_USR_SYSInit(void)
   BXF_NRF_nRF24L01P_Init();
 }
 
+void BXF_USR_NRF_INT_Proess(void)
+{
+  uint8_t state,i;
+  if(bxf_user_int_flag.flag1 == 1)
+  {
+    
+    BXF_UsrLog("nRF_INT_Pin");
+    state= BXF_NRF_ReadData(nRF24L01P_R_reg(NRF_REG_STATUS));
+    BXF_NRF_WriteData(nRF24L01P_W_reg(NRF_REG_STATUS), state);
+
+    if(state&BXF_NRF_MAX_RT)
+    {
+      BXF_UsrLog("BXF_NRF_MAX_RT");
+      bxf_user_nrf_flag.flag0 = 1;
+      BXF_NRF_WriteData(NRF_CMD_FLUSH_TX, 0xFF);
+      
+    }
+    else if(state&BXF_NRF_TX_DS)
+    {
+      BXF_UsrLog("BXF_NRF_TX_DS");
+      bxf_user_nrf_flag.flag1 = 1;
+    }
+    else if(state&BXF_NRF_RX_DS)
+    {
+      BXF_UsrLog("BXF_NRF_RX_DS");
+      if(bxf_user_nrf_flag.flag2 == 0)
+      {
+        bxf_user_nrf_flag.flag2= 1;
+        BXF_NRF_ReadBuff(NRF_CMD_R_RX_PAYLOAD, nrf_rx_buff, nrf_rx_buff_width);
+        BXF_NRF_WriteData(NRF_CMD_FLUSH_RX, 0xFF);
+        
+        for(i=0;i<nrf_rx_buff_width;i++)
+        {
+          printf("RX_buff[%d] = %#2x\r\n", i, nrf_rx_buff[i]);
+        }
+        bxf_user_nrf_flag.flag2 = 0;
+      }
+    }
+    
+    bxf_user_int_flag.flag1 = 0;
+  }
+}
+
 void BXF_USR_KEY_Proess(void)
 {
   if(bxf_user_int_flag.flag0 == 1)
@@ -99,6 +142,9 @@ void BXF_USR_TIM11_Proess(void)
   
   if(bxf_user_int_flag.flag2 == 1) //10ms
   {
+    
+    
+    
     if(bxf_user_key_flag.flag0 == 1)
     {
       if(HAL_GPIO_ReadPin(USER_KEY_GPIO_Port, USER_KEY_Pin) == GPIO_PIN_SET)
@@ -167,6 +213,8 @@ void BXF_USR_TIM11_Proess(void)
     }
     
     bxf_user_int_flag.flag2 = 0;
+    
+    
   }
   
   if(bxf_user_int_flag.flag3 == 1) //100ms
@@ -182,6 +230,15 @@ void BXF_USR_TIM11_Proess(void)
     }
     bxf_user_int_flag.flag3 = 0;
   }
+  
+  if(bxf_user_int_flag.flag4 == 1)
+  {
+    if(bxf_user_nrf_flag.flag3 == 1)
+      BXF_NRF_TxDate((uint8_t *)(&bxf_btp_a1n3s_info), 12);
+    bxf_user_int_flag.flag4 = 0;
+  }
+  
+  
 }
 
 

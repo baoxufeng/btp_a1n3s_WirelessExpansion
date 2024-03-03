@@ -27,6 +27,7 @@
 /* USER CODE BEGIN Includes */
 #include "usbh_vendor_specific.h"
 #include "bxf_usb_define.h"
+#include "bxf_sys_define.h"
 /* USER CODE END Includes */
 
 /* USER CODE BEGIN PV */
@@ -49,7 +50,8 @@ ApplicationTypeDef Appli_state = APPLICATION_IDLE;
 /* USER CODE BEGIN 0 */
 void USBH_VS_EventCallback(USBH_HandleTypeDef *phost)
 {
-//  uint8_t i;
+  uint8_t i;
+  uint8_t *data1, *data2;
 //  uint8_t* pdata;
   VS_TypeTypeDef   type = VS_UNKNOWN;
   VS_BTP_A1N3S_Info_TypeDef *user_btp_a1n3s_info;
@@ -65,8 +67,18 @@ void USBH_VS_EventCallback(USBH_HandleTypeDef *phost)
 //      USBH_UsrLog("type = BTP-A1N3S");
       
       user_btp_a1n3s_info = USBH_VS_GetBtpA1n3sInfo(phost);
+      data1 = (uint8_t *)user_btp_a1n3s_info;
+      data2 = (uint8_t *)&bxf_btp_a1n3s_info;
       
-      #if 1
+      i = 12;
+      while(i)
+      {
+        i--;
+        *(data2+i) = *(data1+i);
+      }
+      
+      
+      #if 0
       if(user_btp_a1n3s_info->B_U) USBH_UsrLog("button up");
       if(user_btp_a1n3s_info->B_D) USBH_UsrLog("button down");
       if(user_btp_a1n3s_info->B_L) USBH_UsrLog("button left");
